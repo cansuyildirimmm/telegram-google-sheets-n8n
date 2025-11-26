@@ -1,0 +1,159 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "8317239377",
+        "text": "Mesajınız başarıyla Google Sheets'e kaydedildi! ✅",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -544,
+        0
+      ],
+      "id": "e665f819-f912-484d-9b93-e73d72624f5d",
+      "name": "Send a text message",
+      "webhookId": "74e21960-7346-45a4-973e-f8da494b6374",
+      "credentials": {
+        "telegramApi": {
+          "id": "CZyfHmlcgQa234Ib",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/15btOrOeuL_baYOyTlS44eGLIEW36ZY0XaNBVZ29nq30/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sayfa1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Tarih": "={{ $now }}",
+            "Mesaj": "= {{ $json.message.text }}",
+            "Kullanıcı": "= {{ $json.message.chat.first_name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Kullanıcı",
+              "displayName": "Kullanıcı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Mesaj",
+              "displayName": "Mesaj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -752,
+        0
+      ],
+      "id": "4c830043-b3f1-432b-974a-a0f9e477f7e6",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ubpkoYospK2vBifH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -944,
+        0
+      ],
+      "id": "5fd6f1fe-c763-4928-bfda-7e796e1cab79",
+      "name": "Bot",
+      "webhookId": "4b44d700-039d-4b2b-bfd7-9bcda3a1d13f",
+      "credentials": {
+        "telegramApi": {
+          "id": "CZyfHmlcgQa234Ib",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Bot": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bc4bdcdf-a6cc-4fd6-9fbb-9a64983e74cc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7faa60bf285e516a34090d35935c973cb243c76146cc5586483f2b11131dda88"
+  },
+  "id": "nZhkPcswSHANQuCE",
+  "tags": []
+}
