@@ -4,9 +4,14 @@ Bu proje, **n8n** otomasyon aracı kullanılarak geliştirilmiştir. Telegram bo
 
 <img width="1441" height="705" alt="Ekran görüntüsü 2025-11-27 004400" src="https://github.com/user-attachments/assets/9df90428-ef6c-4cd3-9785-1dda1b885660" />
 
+
+
 <img width="1902" height="632" alt="Ekran görüntüsü 2025-11-27 005011" src="https://github.com/user-attachments/assets/a2c48754-9b36-4bb7-b8de-e4b8a19fa23a" />
 
-![WhatsApp Image 2025-11-27 at 01 24 56](https://github.com/user-attachments/assets/9dd5c49e-ff4c-4614-85a4-472f455570ed)
+
+
+![WhatsApp Image 2025-11-27 at 01 24 56](https://github.com/user-attachments/assets/785194dc-9cc0-4e69-9a31-9db17f7eab77)
+
 
 
 ## 🛠️ Kullanılan Teknolojiler
